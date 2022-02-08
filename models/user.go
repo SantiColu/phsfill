@@ -29,7 +29,7 @@ func NewRandomUser() *User {
 	}
 
 	if rand.Intn(3) == 1 { // random password
-		password = utils.GenerateRandomPassword(rand.Intn(16) + 8)
+		password = utils.GenerateRandomPassword()
 	}
 
 	user := &User{name, lastname, password, email}
