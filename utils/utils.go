@@ -2,12 +2,28 @@ package utils
 
 import (
 	"bufio"
+	_ "embed"
 	"fmt"
 	"math/rand"
-	"os"
 	"strconv"
 	"strings"
 )
+
+//go:embed wordlists/words.txt
+var wds string
+var words []string = stringToList(wds)
+
+//go:embed wordlists/realLastnames.txt
+var lstn string
+var lastnames []string = stringToList(lstn)
+
+//go:embed wordlists/realNames.txt
+var nm string
+var names []string = stringToList(nm)
+
+//go:embed wordlists/commonPasswords.txt
+var pss string
+var passwords []string = stringToList(pss)
 
 func GenerateRandomPassword() string {
 	var pass string
@@ -108,15 +124,9 @@ func GenerateEmail(name, lastname string) string {
 	return email
 }
 
-func fileToList(path string) []string {
-	file, err := os.Open(path)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer file.Close()
-
+func stringToList(s string) []string {
 	var lines []string
-	scanner := bufio.NewScanner(file)
+	scanner := bufio.NewScanner(strings.NewReader(s))
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
@@ -125,12 +135,11 @@ func fileToList(path string) []string {
 }
 
 func SelectCommonPassword() string {
-	passwords := fileToList("./wordlists/commonPasswords.txt")
+	// passwords := stringToList("./wordlists/commonPasswords.txt")
 	return passwords[rand.Intn(len(passwords)-1)]
 }
 
 func GenerateName() string {
-	names := fileToList("./wordlists/realNames.txt")
 	return names[rand.Intn(len(names)-1)]
 }
 
@@ -152,12 +161,10 @@ func GenerateDate() string {
 }
 
 func GenerateWord() string {
-	words := fileToList("./wordlists/words.txt")
 	return words[rand.Intn(len(words)-1)]
 }
 
 func GenerateLastname() string {
-	lastnames := fileToList("./wordlists/realLastnames.txt")
 	return lastnames[rand.Intn(len(lastnames)-1)]
 }
 
