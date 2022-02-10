@@ -5,7 +5,7 @@ Script to fill phishing sites databases with random data and prevent theft
 To install the library, run
 
 ```sh
-go install -u  go get github.com/SantiColu/phsfill@lastest
+go install github.com/SantiColu/phsfill@lastest
 ```
 
 ## Usage:  
@@ -13,7 +13,7 @@ go install -u  go get github.com/SantiColu/phsfill@lastest
 $ phsfill [OPTIONS]
 ```
 
-```sh
+```
 -basic
     if it is true the data will be sended with basic-auth format
   
