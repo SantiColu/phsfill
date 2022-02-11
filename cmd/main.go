@@ -82,6 +82,6 @@ func main() {
 }
 
 func usage() {
-	fmt.Println("usage: phsfill [OPTIONS] \n\nphsfill is a simple tool fill phishing sites databases with random data and prevent theft")
+	fmt.Println("usage: phsfill [OPTIONS] \n\nphsfill is a simple tool to fill phishing sites databases with random data and prevent theft")
 	flag.PrintDefaults()
 }
